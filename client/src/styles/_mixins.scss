@@ -1,0 +1,31 @@
+@import './_variables';
+
+@mixin center {
+    display: flex;
+    justify-content: center;
+  }
+
+  @mixin pointer {
+    &:hover {
+      cursor: pointer;
+  }
+  }
+
+  @mixin center-vertically {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @mixin hoverAnimation {
+    &:hover {
+      transform: translateY(-10px);
+  }
+  }
+
+  // @mixin darkTheme {
+  //   background-color: $color-primary-dark;
+  //   color: #fff;
+  //   transition: 1s;
+  // }

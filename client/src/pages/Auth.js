@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Checkout() {
+function Auth() {
     return (
         <div>
-            <h1>Checkout</h1>
+            <h1>Auth</h1>
         </div>
     )
 }
 
-export default Checkout
+export default Auth
