@@ -1,0 +1,7 @@
+@import '../styles/mixins';
+
+.Home {
+    height: 100vh;
+    @include center-vertically;
+    flex-direction: row;
+}

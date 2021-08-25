@@ -1,0 +1,28 @@
+@import '../styles/mixins';
+
+.Checkout {
+    @include center-vertically;
+    height: 100vh;
+    border: 1px solid blue;
+    &-detail {
+        border: 1px solid green;
+        display: flex;
+        justify-content: space-between;
+        
+        img {
+            border: 1px solid black;
+            width: 50%;
+        }
+        &-quantity {
+            @include center-vertically;
+            flex-direction: row;
+            button {
+                height: 30px;
+            }
+        }
+
+        &-price {
+            @include center-vertically;
+        }
+    }
+}

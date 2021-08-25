@@ -1,0 +1,7 @@
+@import '../../styles/_mixins';
+@import '../../styles/_variables';
+
+.AuthForm {
+    height: 100vh;
+    @include center-vertically;
+}
