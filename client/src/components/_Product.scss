@@ -1,6 +1,11 @@
 .Product {
     width: 25%;
     margin-left: 1rem;
+    margin-bottom: 1rem;
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
     &-info {
         &-name {
             font-size: 1.2rem;

@@ -2,12 +2,13 @@
 
 .Checkout {
     @include center-vertically;
-    height: 100vh;
+    // height: 100vh;
     border: 1px solid blue;
     &-detail {
         border: 1px solid green;
         display: flex;
         justify-content: space-between;
+        margin-bottom: 1rem;
         
         img {
             border: 1px solid black;
