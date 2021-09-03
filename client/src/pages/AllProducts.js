@@ -16,6 +16,7 @@ function AllProducts() {
             category: 'Boxing Gloves',
             price: 85.00,
             rating: 4,
+            id:'806d52d4cd744eeaaa26857d43f8bd4d',
             reviews: [
                 {
                     username: 'React',
@@ -31,6 +32,7 @@ function AllProducts() {
             category: 'MMA Gloves',
             price: 50.00,
             rating: 3,
+            id: 'f1f599796ad7434aad88327f295595dc',
             reviews: [
                 {
                     username: 'React',
@@ -46,6 +48,7 @@ function AllProducts() {
             category: 'Boxing Gloves',
             price: 99.00,
             rating: 3,
+            id: 'ed9ca15a9765478b928413db34d19d90',
             reviews: [
                 {
                     username: 'React',
@@ -60,6 +63,7 @@ function AllProducts() {
             category: 'Bag Gloves',
             price: 99.00,
             rating: 3,
+            id: '6e86f5a71a3d4f6692c7df08549669e7',
             reviews: [
                 {
                     username: 'React',
@@ -75,6 +79,7 @@ function AllProducts() {
             category: 'Boxing Gloves',
             price: 99.00,
             rating: 3,
+            id: '64aeeeccee6241569b5a67b0b7131864',
             reviews: [
                 {
                     username: 'React',
@@ -90,6 +95,7 @@ function AllProducts() {
             category: 'Wraps',
             price: 30.00,
             rating: 3,
+            id: '250e0e0cc16b4c5587277c918c0fec22',
             reviews: [
                 {
                     username: 'React',
@@ -105,6 +111,7 @@ function AllProducts() {
             category: 'Boxing Gloves',
             price: 85.00,
             rating: 4,
+            id: 'b48d9e942afb42768d1aec80541637e7',
             reviews: [
                 {
                     username: 'React',
@@ -120,6 +127,7 @@ function AllProducts() {
             category: 'MMA Gloves',
             price: 50.00,
             rating: 3,
+            id: '84dee3971f1f4ba9a2680a2d51a791cf',
             reviews: [
                 {
                     username: 'React',
@@ -135,6 +143,7 @@ function AllProducts() {
             category: 'Boxing Gloves',
             price: 99.00,
             rating: 3,
+            id: 'ad0aa88af3d341609094dc5d2b6e3452',
             reviews: [
                 {
                     username: 'React',
@@ -149,6 +158,7 @@ function AllProducts() {
             category: 'Bag Gloves',
             price: 99.00,
             rating: 3,
+            id: 'b45943a658ac4f9aa5054251cdc21bf1',
             reviews: [
                 {
                     username: 'React',
@@ -164,6 +174,7 @@ function AllProducts() {
             category: 'Boxing Gloves',
             price: 99.00,
             rating: 3,
+            id: 'c8a6fbd9b0694800a35bf2a82b895a29',
             reviews: [
                 {
                     username: 'React',
@@ -179,6 +190,7 @@ function AllProducts() {
             category: 'Wraps',
             price: 30.00,
             rating: 3,
+            id: 'd0aa3821b9ed45d0a2ce4c899e560c8d',
             reviews: [
                 {
                     username: 'React',
@@ -204,7 +216,7 @@ function AllProducts() {
     let fetchedProducts;
     if (loadedProducts) {
         fetchedProducts = loadedProducts.map(product => (
-            <Product name={product.name} image={product.image} category={product.category} price={product.price} rating={product.rating} />
+            <Product name={product.name} image={product.image} category={product.category} price={product.price} rating={product.rating} id={product.id} />
         ))
     }
 

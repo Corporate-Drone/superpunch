@@ -1,0 +1,16 @@
+.Review {
+    border: 1px solid green;
+    &-detail {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .Review {
+        &-detail {
+            flex-direction: column;
+        }
+    }
+}

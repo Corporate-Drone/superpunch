@@ -23,16 +23,16 @@ const Header = () => {
         </div>
         <ul className={click ? "header-nav-options active" : "header-nav-options"}>
           <li className="option">
-            <Link onClick={closeMobileMenu} activeClass="active" to="home">Home</Link>
+            <Link onClick={closeMobileMenu} activeClass="active" to="/home">Home</Link>
           </li>
           <li className="option">
-            <Link onClick={closeMobileMenu} activeClass="active" to="shop">Shop</Link>
+            <Link onClick={closeMobileMenu} activeClass="active" to="/shop">Shop</Link>
           </li>
           <li className="option">
-            <Link onClick={closeMobileMenu} activeClass="active" to="auth">Login</Link>
+            <Link onClick={closeMobileMenu} activeClass="active" to="/auth">Login</Link>
           </li>
           <li className="option">
-            <Link onClick={closeMobileMenu} activeClass="active" to="checkout">Checkout</Link>
+            <Link onClick={closeMobileMenu} activeClass="active" to="/checkout">Checkout</Link>
           </li>
         </ul>
       </div>

@@ -1,0 +1,11 @@
+.ReviewForm {
+    border: 1px solid green;
+    margin-bottom: 1rem;
+    .input-feedback {
+        color: red;
+    }
+
+    textarea {
+        width: 98.5%;
+    }
+}

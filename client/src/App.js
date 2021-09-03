@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Auth from './pages/Auth'
 import AllProducts from './pages/AllProducts'
 import Checkout from './pages/Checkout'
+import SpecificProduct from './pages/SpecificProduct';
 
 import './_App.scss';
 
@@ -18,6 +19,9 @@ function App() {
         </Route>
         <Route path="/shop" exact>
           <AllProducts />
+        </Route>
+        <Route path="/shop/:productId" exact>
+          <SpecificProduct />
         </Route>
         <Route path="/auth" exact>
           <Auth />
