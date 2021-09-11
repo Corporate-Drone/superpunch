@@ -25,5 +25,11 @@
         &-price {
             @include center-vertically;
         }
+
+        &-remove {
+            height: 30px;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
     }
 }

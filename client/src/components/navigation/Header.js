@@ -13,6 +13,13 @@ const Header = () => {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
+  const item = useSelector(state => state)
+
+  let itemsInCart;
+  if (item && item.items) {
+    itemsInCart = item.items.length
+  }
+
   return (
     <div className="header">
       <div className="header-logo-nav">
@@ -23,16 +30,16 @@ const Header = () => {
         </div>
         <ul className={click ? "header-nav-options active" : "header-nav-options"}>
           <li className="option">
-            <Link onClick={closeMobileMenu} activeClass="active" to="/home">Home</Link>
+            <Link onClick={closeMobileMenu}to="/home">Home</Link>
           </li>
           <li className="option">
-            <Link onClick={closeMobileMenu} activeClass="active" to="/shop">Shop</Link>
+            <Link onClick={closeMobileMenu} to="/shop">Shop</Link>
           </li>
           <li className="option">
-            <Link onClick={closeMobileMenu} activeClass="active" to="/auth">Login</Link>
+            <Link onClick={closeMobileMenu} to="/auth">Login</Link>
           </li>
           <li className="option">
-            <Link onClick={closeMobileMenu} activeClass="active" to="/checkout">Checkout</Link>
+            <Link onClick={closeMobileMenu} to="/checkout">Checkout ({itemsInCart})</Link>
           </li>
         </ul>
       </div>

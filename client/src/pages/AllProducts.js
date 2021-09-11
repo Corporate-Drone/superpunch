@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react'
 
 import Product from '../components/Product'
+import Loader from '../components/uiElements/Loader';
 import './_AllProducts.scss'
 
 function AllProducts() {
     const [displayProducts, setDisplayProducts] = useState('All Products');
     const [loadedProducts, setLoadedProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
     const handleClick = (type) => setDisplayProducts(type);
 
     const dummyProducts = [
@@ -216,7 +218,7 @@ function AllProducts() {
     let fetchedProducts;
     if (loadedProducts) {
         fetchedProducts = loadedProducts.map(product => (
-            <Product name={product.name} image={product.image} category={product.category} price={product.price} rating={product.rating} id={product.id} />
+            <Product name={product.name} image={product.image} category={product.category} price={product.price} rating={product.rating} id={product.id} key={product.id} />
         ))
     }
 
@@ -239,7 +241,7 @@ function AllProducts() {
             <div className="AllProducts-Products">
                 <div className="AllProducts-Products-row">{fetchedProducts}</div>
             </div>
-
+            {/* {loading && <Loader/>} */}
         </div>
     )
 }
