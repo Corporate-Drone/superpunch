@@ -1,0 +1,32 @@
+@import '../styles/mixins';
+
+.ItemInCart {
+    &-detail {
+        border: 1px solid green;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        
+        img {
+            border: 1px solid black;
+            width: 50%;
+        }
+        &-quantity {
+            @include center-vertically;
+            flex-direction: row;
+            button {
+                height: 30px;
+            }
+        }
+
+        &-price {
+            @include center-vertically;
+        }
+
+        &-remove {
+            height: 30px;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    }
+}

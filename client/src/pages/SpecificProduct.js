@@ -35,7 +35,7 @@ function SpecificProduct() {
         ]
     }
 
-    const handleClick = () => {
+    const handleClick = (buyNow) => {
         //if state.items contains dummy product already
         //windows alert
         //else dispatch
@@ -48,6 +48,10 @@ function SpecificProduct() {
             }
         } else {
             dispatch(addItem(dummyProduct))
+
+            if (buyNow) {
+                history.push('/checkout')
+            }
         }
     }
 
@@ -83,7 +87,11 @@ function SpecificProduct() {
                         value={4}
                     />
                     <div>$99.00</div>
-                    <button onClick={handleClick}>Add To Cart</button>
+                    <div className="SpecificProduct-detail-buttons">
+                        <button onClick={handleClick}>Add to Cart</button>
+                        <button onClick={() => handleClick('buyNow')}>Buy Now</button>
+                    </div>
+
 
                     <div className="SpecificProduct-detail-reviews">
                         <div>

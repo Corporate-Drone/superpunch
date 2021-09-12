@@ -11,12 +11,19 @@
     &-detail{
         height: 100vh;
         width: 35%;
+        &-buttons {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            button {
+                margin-bottom: 1rem;
+            }
+        }
         &-reviews {
             margin-top: 4rem;
             &-top {
                 display: flex;
                 flex-direction: row;
-                border: 1px solid red;
             }
         }
     }
