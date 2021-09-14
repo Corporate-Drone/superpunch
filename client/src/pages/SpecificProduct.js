@@ -36,9 +36,6 @@ function SpecificProduct() {
     }
 
     const handleClick = (buyNow) => {
-        //if state.items contains dummy product already
-        //windows alert
-        //else dispatch
         if (state && state.items && state.items.length !== 0) {
             console.log(state.items)
             for (const item of state.items) {
@@ -88,7 +85,7 @@ function SpecificProduct() {
                     />
                     <div>$99.00</div>
                     <div className="SpecificProduct-detail-buttons">
-                        <button onClick={handleClick}>Add to Cart</button>
+                        <button onClick={() => handleClick()}>Add to Cart</button>
                         <button onClick={() => handleClick('buyNow')}>Buy Now</button>
                     </div>
 
