@@ -1,8 +1,8 @@
-import axios from 'axios';
+import { ADD_CART, REMOVE_CART } from './types';
 
 export const addItem = item => async dispatch => {
     dispatch({
-        type: 'add',
+        type: ADD_CART,
         payload: item
     })
     // return {
@@ -12,7 +12,7 @@ export const addItem = item => async dispatch => {
 
 export const removeItem = item => async dispatch => {
     dispatch({
-        type: 'remove',
+        type: REMOVE_CART,
         payload: item
     })
     // return {

@@ -4,10 +4,13 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux' //connects global 
 import thunk from 'redux-thunk';
 import { HashRouter } from 'react-router-dom';
+import rootReducer from './reducers'
 
 import './_index.scss';
 import App from './App';
 import addItem from './reducers/checkoutItem'
+
+const initialState = {};
 
 const store = createStore(
   addItem,

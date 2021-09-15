@@ -1,3 +1,5 @@
+import { ADD_CART, REMOVE_CART } from "../actions/types";
+
 const initialState = {
     items: []
 }
@@ -10,12 +12,12 @@ const checkoutItem = (state = initialState, action) => {
                 ...state,
                 items: [...state.items]
             }
-        case 'add':
+        case ADD_CART:
             return {
                 ...state,
                 items: [payload, ...state.items]
             }
-        case 'remove':
+        case REMOVE_CART:
             return {
                 ...state,
                 items: state.items.filter(item => item.id !== payload)

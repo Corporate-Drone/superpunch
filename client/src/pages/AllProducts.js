@@ -1,14 +1,26 @@
 import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import Product from '../components/Product'
 import Loader from '../components/uiElements/Loader';
+import { getProducts } from '../actions/products';
 import './_AllProducts.scss'
 
 function AllProducts() {
+    const dispatch = useDispatch()
+    const state = useSelector(state => state)
+
+    // const products = useSelector(state => state.products.products)
+    // const loading = useSelector(state => state.products.loading)
+
     const [displayProducts, setDisplayProducts] = useState('All Products');
     const [loadedProducts, setLoadedProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const handleClick = (type) => setDisplayProducts(type);
+
+    // useEffect(() => {
+    //     dispatch(getProducts())
+    // },[])
 
     const dummyProducts = [
         {

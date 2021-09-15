@@ -5,6 +5,7 @@ const cors = require('cors');
 const { check } = require('express-validator/check');
 const { validationResult } = require('express-validator/check');
 require('dotenv').config()
+const shopRoutes = require('./routes/shop-routes');
 
 const app = express();
 
@@ -34,6 +35,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); //used to parse req.body
 app.use(express.static(path.join(__dirname, "client", "build")))
+
+app.use('/shop', shopRoutes)
 
 app.use((error, req, res, next) => {
     if (res.headerSent) {
