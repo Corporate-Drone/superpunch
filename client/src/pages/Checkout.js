@@ -9,12 +9,12 @@ function Checkout() {
     const [subtotal, setSubtotal] = useState(0);
     const history = useHistory();
     
-    const state = useSelector(state => state)
+    const items = useSelector(state => state.checkoutItem.items)
 
     //add item prices in cart to get subtotal on page loaded
     useEffect(() => {
-        if (state && state.items.length > 0) {
-            for (const item of state.items) {
+        if (items.length > 0) {
+            for (const item of items) {
                 setSubtotal(subtotal + item.price)
             }
         }
@@ -29,8 +29,8 @@ function Checkout() {
     }
 
     let cartItems;
-    if (state && state.items.length > 0) {
-        cartItems = state.items.map(item => (
+    if (items.length > 0) {
+        cartItems = items.map(item => (
             <ItemInCart item={item} setSubtotal={setSubtotal} subtotal={subtotal} />
         )) //map through state.items
     }
@@ -39,10 +39,10 @@ function Checkout() {
         <div className="Checkout">
             <h1>Your Shopping Cart</h1>
             {cartItems}
-            {state && state.items.length <= 0 && <div>Your cart is empty.</div>}
+            {items.length <= 0 && <div>Your cart is empty.</div>}
             <div>Subtotal: ${subtotal}</div>
-            {state && state.items.length > 0 && <button onClick={handleCheckoutClick}>Checkout</button>}
-            {state && state.items.length <= 0 && <button onClick={handleBrowseClick}>Browse Products</button>}
+            {items.length > 0 && <button onClick={handleCheckoutClick}>Checkout</button>}
+            {items.length <= 0 && <button onClick={handleBrowseClick}>Browse Products</button>}
         </div>
     )
 }

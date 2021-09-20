@@ -13,11 +13,11 @@ const Header = () => {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-  const item = useSelector(state => state)
+  const items = useSelector(state => state.checkoutItem.items)
 
   let itemsInCart;
-  if (item && item.items) {
-    itemsInCart = item.items.length
+  if (items) {
+    itemsInCart = items.length
   }
 
   return (

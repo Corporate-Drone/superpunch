@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from "react-router-dom";
 import ReactStars from 'react-stars'
 import { Carousel } from 'react-responsive-carousel';
@@ -10,12 +10,20 @@ import Review from '../components/Review';
 import ReviewForm from '../components/form/ReviewForm';
 import styles from 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { addItem } from '../actions/checkoutItem';
+import { getProduct } from '../actions/products';
 
 function SpecificProduct() {
-    const [loading, setLoading] = useState(true);
+    // const [loading, setLoading] = useState(true);
     const history = useHistory();
     const dispatch = useDispatch();
-    const state = useSelector(state => state)
+
+    const items = useSelector(state => state.checkoutItem.items)
+    const product = useSelector(state => state.products.product)
+    const loading = useSelector(state => state.products.loading)
+
+    useEffect(() => {
+        // dispatch(getProducts())
+    },[])
 
     const dummyProduct =
     {
@@ -30,15 +38,15 @@ function SpecificProduct() {
             {
                 username: 'React',
                 body: 'https://reactjs.org/',
-                rating: 3
+                rating: 3,
+                date: '4/1/2019'
             }
         ]
     }
 
     const handleClick = (buyNow) => {
-        if (state && state.items && state.items.length !== 0) {
-            console.log(state.items)
-            for (const item of state.items) {
+        if (items.length !== 0) {
+            for (const item of items) {
                 if (item.id === dummyProduct.id) {
                     alert("This product is already in your cart!");
                 }
@@ -50,6 +58,18 @@ function SpecificProduct() {
                 history.push('/checkout')
             }
         }
+    }
+
+    let allReviews;
+    if (dummyProduct) {
+        allReviews = dummyProduct.reviews.map(review => (
+            <Review
+                username={review.username}
+                body={review.body}
+                rating={review.rating}
+                date={review.date}
+            />
+        ))
     }
 
     return (
@@ -95,7 +115,9 @@ function SpecificProduct() {
                             <h3>Customer Reviews</h3>
                         </div>
                         <ReviewForm />
-                        <div className="SpecificProduct-detail-reviews-posted"><Review /></div>
+                        <div className="SpecificProduct-detail-reviews-posted">
+                            {allReviews}
+                        </div>
                     </div>
                 </div>
                 {/* {loading && <Loader />} */}

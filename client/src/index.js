@@ -4,16 +4,16 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux' //connects global 
 import thunk from 'redux-thunk';
 import { HashRouter } from 'react-router-dom';
-import rootReducer from './reducers'
 
 import './_index.scss';
 import App from './App';
-import addItem from './reducers/checkoutItem'
+import rootReducer from './reducers'
 
 const initialState = {};
 
 const store = createStore(
-  addItem,
+  rootReducer,
+  initialState,
   applyMiddleware(thunk),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
