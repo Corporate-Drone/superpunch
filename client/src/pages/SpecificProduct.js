@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import ReactStars from 'react-stars'
 import { Carousel } from 'react-responsive-carousel';
 import { useSelector, useDispatch } from 'react-redux'
@@ -13,7 +13,7 @@ import { addItem } from '../actions/checkoutItem';
 import { getProduct } from '../actions/products';
 
 function SpecificProduct() {
-    // const [loading, setLoading] = useState(true);
+    const { id } = useParams();
     const history = useHistory();
     const dispatch = useDispatch();
 
@@ -22,47 +22,30 @@ function SpecificProduct() {
     const loading = useSelector(state => state.products.loading)
 
     useEffect(() => {
-        // dispatch(getProducts())
-    },[])
-
-    const dummyProduct =
-    {
-        name: 'Glove1',
-        description: 'Glove for boxing. ',
-        image: 'https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?format=jpg&quality=90&v=1530129081',
-        category: 'Boxing Gloves',
-        price: 85.00,
-        rating: 4,
-        id: '806d52d4cd744eeaaa26857d43f8bd4d',
-        reviews: [
-            {
-                username: 'React',
-                body: 'https://reactjs.org/',
-                rating: 3,
-                date: '4/1/2019'
-            }
-        ]
-    }
+        dispatch(getProduct(id))
+    }, [])
 
     const handleClick = (buyNow) => {
         if (items.length !== 0) {
             for (const item of items) {
-                if (item.id === dummyProduct.id) {
+                if (item._id === product._id) {
                     alert("This product is already in your cart!");
                 }
             }
         } else {
-            dispatch(addItem(dummyProduct))
+            dispatch(addItem(product))
 
             if (buyNow) {
                 history.push('/checkout')
             }
         }
+        console.log(items)
     }
 
     let allReviews;
-    if (dummyProduct) {
-        allReviews = dummyProduct.reviews.map(review => (
+    let allImages;
+    if (product) {
+        allReviews = product.reviews.map(review => (
             <Review
                 username={review.username}
                 body={review.body}
@@ -70,31 +53,28 @@ function SpecificProduct() {
                 date={review.date}
             />
         ))
+        allImages = product.image.map(img => (
+            <div>
+                <img src={img} alt={img} />
+            </div>
+        ))
     }
 
     return (
         <>
             <div onClick={() => history.push('/shop')}>Back</div>
-            <div className="SpecificProduct">
+            {product && !loading && <div className="SpecificProduct">
                 <div className="SpecificProduct-images">
                     <Carousel
                         autoPlay={true}
                         showIndicators={false}
                         swipeScrollTolerance={1}
                     >
-                        <div>
-                            <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?format=jpg&quality=90&v=1530129081" />
-                        </div>
-                        <div>
-                            <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?format=jpg&quality=90&v=1530129081" />
-                        </div>
-                        <div>
-                            <img src="https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?format=jpg&quality=90&v=1530129081" />
-                        </div>
+                        {allImages}
                     </Carousel>
                 </div>
                 <div className="SpecificProduct-detail">
-                    <h2>Name</h2>
+                    <h2>{product.name}</h2>
                     <ReactStars
                         count={5}
                         size={24}
@@ -103,7 +83,7 @@ function SpecificProduct() {
                         edit={false}
                         value={4}
                     />
-                    <div>$99.00</div>
+                    <div>${product.price}.00</div>
                     <div className="SpecificProduct-detail-buttons">
                         <button onClick={() => handleClick()}>Add to Cart</button>
                         <button onClick={() => handleClick('buyNow')}>Buy Now</button>
@@ -120,8 +100,9 @@ function SpecificProduct() {
                         </div>
                     </div>
                 </div>
-                {/* {loading && <Loader />} */}
-            </div>
+                
+            </div>}
+            {loading && <Loader />}
         </>
     )
 }

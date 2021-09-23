@@ -20,7 +20,7 @@ function App() {
         <Route path="/shop" exact>
           <AllProducts />
         </Route>
-        <Route path="/shop/:productId" exact>
+        <Route path="/shop/:id" exact>
           <SpecificProduct />
         </Route>
         <Route path="/auth" exact>

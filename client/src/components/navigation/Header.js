@@ -7,13 +7,25 @@ import { ReactComponent as MenuIcon } from "../../assets/menu.svg";
 import { ReactComponent as Logo } from "../../assets/logo.svg";
 import Gloves from '../../assets/boxing-gloves.png';
 import "./_Header.scss";
+import { resetProduct } from '../../actions/products';
 
 const Header = () => {
+  const dispatch = useDispatch();
+
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
+  const handleMenuClick = () => {
+    closeMobileMenu()
+    
+    if (product) {
+      dispatch(resetProduct())
+    }
+  }
+
   const items = useSelector(state => state.checkoutItem.items)
+  const product = useSelector(state => state.products.product)
 
   let itemsInCart;
   if (items) {
@@ -30,16 +42,16 @@ const Header = () => {
         </div>
         <ul className={click ? "header-nav-options active" : "header-nav-options"}>
           <li className="option">
-            <Link onClick={closeMobileMenu}to="/home">Home</Link>
+            <Link onClick={handleMenuClick}to="/home">Home</Link>
           </li>
           <li className="option">
-            <Link onClick={closeMobileMenu} to="/shop">Shop</Link>
+            <Link onClick={handleMenuClick} to="/shop">Shop</Link>
           </li>
           <li className="option">
-            <Link onClick={closeMobileMenu} to="/auth">Login</Link>
+            <Link onClick={handleMenuClick} to="/auth">Login</Link>
           </li>
           <li className="option">
-            <Link onClick={closeMobileMenu} to="/checkout">Checkout ({itemsInCart})</Link>
+            <Link onClick={handleMenuClick} to="/checkout">Checkout ({itemsInCart})</Link>
           </li>
         </ul>
       </div>

@@ -3,12 +3,13 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import Product from '../components/Product'
 import Loader from '../components/uiElements/Loader';
-import { getProducts } from '../actions/products';
+import { getProducts, resetProduct } from '../actions/products';
 import './_AllProducts.scss'
 
 function AllProducts() {
     const dispatch = useDispatch()
     const products = useSelector(state => state.products.products)
+    const product = useSelector(state => state.products.product)
     const loading = useSelector(state => state.products.loading)
 
     const [displayProducts, setDisplayProducts] = useState('All Products');
@@ -17,6 +18,10 @@ function AllProducts() {
 
     useEffect(() => {
         dispatch(getProducts())
+
+        if (product) {
+            dispatch(resetProduct())
+        }
     },[])
 
     useEffect(() => {

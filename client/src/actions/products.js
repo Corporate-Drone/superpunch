@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_PRODUCTS, GET_PRODUCT } from './types';
+import { GET_PRODUCTS, GET_PRODUCT, RESET_PRODUCT } from './types';
 
 export const getProducts = () => async dispatch => {
     try {
@@ -15,9 +15,11 @@ export const getProducts = () => async dispatch => {
     }
 }
 
-export const getProduct = () => async dispatch => {
+export const getProduct = (id) => async dispatch => {
     try {
-        const res = await axios.get('/shop/:id')
+        const res = await axios.get(`/shop/${id}`, {
+            params: {id}
+        })
         
         dispatch({
             type: GET_PRODUCT,
@@ -26,4 +28,11 @@ export const getProduct = () => async dispatch => {
     } catch (err) {
         console.log(err)
     }
+}
+
+//reset previously product already loaded
+export const resetProduct = () => dispatch => {
+    dispatch({
+        type: RESET_PRODUCT
+    })
 }
