@@ -20,7 +20,7 @@ const checkoutItem = (state = initialState, action) => {
         case REMOVE_CART:
             return {
                 ...state,
-                items: state.items.filter(item => item.id !== payload)
+                items: state.items.filter(item => item._id !== payload)
             }
     }
 }

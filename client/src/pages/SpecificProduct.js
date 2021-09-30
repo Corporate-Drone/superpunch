@@ -26,20 +26,26 @@ function SpecificProduct() {
     }, [])
 
     const handleClick = (buyNow) => {
-        if (items.length !== 0) {
-            for (const item of items) {
-                if (item._id === product._id) {
-                    alert("This product is already in your cart!");
-                }
-            }
-        } else {
+        if (items.length === 0) {
             dispatch(addItem(product))
-
             if (buyNow) {
                 history.push('/checkout')
             }
+        } else {
+            for (const item of items) {
+                if (item._id === product._id) {
+                    alert("This product is already in your cart!");
+                    break;
+                } else {
+                    dispatch(addItem(product))
+                    if (buyNow) {
+                        history.push('/checkout')
+                    }
+                    break;
+                }
+            }
         }
-        console.log(items)
+
     }
 
     let allReviews;
@@ -100,7 +106,7 @@ function SpecificProduct() {
                         </div>
                     </div>
                 </div>
-                
+
             </div>}
             {loading && <Loader />}
         </>

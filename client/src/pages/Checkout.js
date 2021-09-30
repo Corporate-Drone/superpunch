@@ -11,14 +11,16 @@ function Checkout() {
     
     const items = useSelector(state => state.checkoutItem.items)
 
-    //add item prices in cart to get subtotal on page loaded
+    //add item prices in cart to get subtotal on page loaded or when items change
     useEffect(() => {
         if (items.length > 0) {
+            let itemTotals = 0;
             for (const item of items) {
-                setSubtotal(subtotal + item.price)
+                itemTotals = itemTotals + item.price
             }
+            setSubtotal(itemTotals)
         }
-    }, [])
+    }, [items])
 
     const handleCheckoutClick = () => {
         history.push('/')

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from "react-router-dom";
 import { removeItem } from '../actions/checkoutItem';
@@ -11,9 +11,15 @@ function ItemInCart(props) {
     const [total, setTotal] = useState(item.price)
     const dispatch = useDispatch();
 
+    //reset quantity and total when an item is removed from cart
+    useEffect(() => {
+        setTotal(item.price)
+        setQuantity(1)
+},[item])
+
     const handleClick = (id) => {
         dispatch(removeItem(id))
-        setSubtotal(subtotal-total)
+        setSubtotal(subtotal - total)
     }
 
     const addQuantity = () => {
@@ -33,8 +39,8 @@ function ItemInCart(props) {
     }
 
     return (
-        <div className="ItemInCart-detail" key={item.id}>
-            <Link to={`/shop/${item.id}`}>
+        <div className="ItemInCart-detail" key={item._id}>
+            <Link to={`/shop/${item._id}`}>
                 <div>{item.name}</div>
                 </Link>
                 <img src={item.image} alt={item.name}></img>
@@ -44,7 +50,7 @@ function ItemInCart(props) {
                     <button onClick={addQuantity}>+</button>
                 </div>
                 <div className="ItemInCart-detail-price">${total}</div>
-            <button className="ItemInCart-detail-remove" onClick={() => handleClick(item.id)}>Remove</button>
+            <button className="ItemInCart-detail-remove" onClick={() => handleClick(item._id)}>Remove</button>
             </div>
     )
 }
