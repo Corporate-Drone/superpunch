@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useHistory, useParams } from "react-router-dom";
 import ReactStars from 'react-stars'
 import { Carousel } from 'react-responsive-carousel';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 
 import './_SpecificProduct.scss'
 import Loader from '../components/uiElements/Loader';

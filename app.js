@@ -6,6 +6,7 @@ const { check } = require('express-validator/check');
 const { validationResult } = require('express-validator/check');
 require('dotenv').config()
 const shopRoutes = require('./routes/shop-routes');
+const authRoutes = require('./routes/auth-routes');
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use(express.urlencoded({ extended: true })); //used to parse req.body
 app.use(express.static(path.join(__dirname, "client", "build")))
 
 app.use('/shop', shopRoutes)
+app.use('/auth', authRoutes)
 
 app.use((error, req, res, next) => {
     if (res.headerSent) {

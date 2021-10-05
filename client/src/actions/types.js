@@ -17,3 +17,4 @@ export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 export const ADD_CART = 'ADD_CART';
 export const REMOVE_CART = 'REMOVE_CART';
 export const RESET_PRODUCT = 'RESET_PRODUCT';
+export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';

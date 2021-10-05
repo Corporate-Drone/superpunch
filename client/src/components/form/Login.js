@@ -1,22 +1,24 @@
 import React from 'react'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
 
+import { loginUser } from '../../actions/auth';
 import './_Login.scss'
 
 function Login(props) {
-    const {handleClick} = props;
-    return (
-        <div>
-           <Formik
+  const { handleClick } = props;
+  const dispatch = useDispatch();
+
+  return (
+    <div>
+      <Formik
         initialValues={{
           username: "",
           password: ""
         }}
         onSubmit={async values => {
-          
+          dispatch(loginUser(values.username, values.password))
         }}
 
         validationSchema={Yup.object().shape({
@@ -85,16 +87,16 @@ function Login(props) {
 
                 <button className="Login-Submit" type="submit" disabled={isSubmitting}>
                   Login
-            </button>
+                </button>
 
               </form>
             </div>
           );
         }}
-            </Formik>
-            <div>Don't have an account? <button onClick={handleClick}>Create one</button></div>
-        </div>
-    )
+      </Formik>
+      <div>Don't have an account? <button onClick={handleClick}>Create one</button></div>
+    </div>
+  )
 }
 
 export default Login

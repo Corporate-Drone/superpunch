@@ -1,12 +1,14 @@
 import React from 'react'
-import axios from 'axios';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { useDispatch } from 'react-redux'
 
+import { registerUser } from '../../actions/auth';
 import './_Register.scss'
 
 function Register(props) {
     const { handleClick } = props;
+    const dispatch = useDispatch();
 
     return (
         <div>
@@ -18,7 +20,7 @@ function Register(props) {
                     passwordtwo: ""
                 }}
                 onSubmit={async values => {
-
+                    dispatch(registerUser(values.username, values.email, values.password))
                 }}
 
                 validationSchema={Yup.object().shape({
@@ -27,6 +29,8 @@ function Register(props) {
                         .max(15, 'Must be less than 15 characters.')
                         .required("Required"),
                     password: Yup.string()
+                        .min(2, 'At least 2 characters required.')
+                        .max(15, 'Must be less than 15 characters.')
                         .required("Required"),
                     passwordtwo: Yup.string()
                         .required("Required")

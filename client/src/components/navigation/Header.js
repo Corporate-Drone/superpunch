@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { ReactComponent as CloseMenu } from "../../assets/x.svg";
 import { ReactComponent as MenuIcon } from "../../assets/menu.svg";
@@ -8,6 +8,7 @@ import { ReactComponent as Logo } from "../../assets/logo.svg";
 import Gloves from '../../assets/boxing-gloves.png';
 import "./_Header.scss";
 import { resetProduct } from '../../actions/products';
+import { LOGOUT } from '../../actions/types';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -24,8 +25,15 @@ const Header = () => {
     }
   }
 
+  const handleLogout = () => {
+    dispatch({
+      type: LOGOUT
+  })
+  }
+
   const items = useSelector(state => state.checkoutItem.items)
   const product = useSelector(state => state.products.product)
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
 
   let itemsInCart;
   if (items) {
@@ -37,7 +45,7 @@ const Header = () => {
       <div className="header-logo-nav">
         <div className="header-logo-container">
           <a href="/">
-            <img src={Gloves} className="logo"></img>
+            <img src={Gloves} alt="logo" className="logo"></img>
           </a>
         </div>
         <ul className={click ? "header-nav-options active" : "header-nav-options"}>
@@ -48,7 +56,8 @@ const Header = () => {
             <Link onClick={handleMenuClick} to="/shop">Shop</Link>
           </li>
           <li className="option">
-            <Link onClick={handleMenuClick} to="/auth">Login</Link>
+            {!isAuthenticated && <Link onClick={handleMenuClick} to="/auth">Login</Link>}
+            {isAuthenticated && <Link onClick={handleLogout} to="/">Logout</Link>}
           </li>
           <li className="option">
             <Link onClick={handleMenuClick} to="/checkout">Checkout ({itemsInCart})</Link>
