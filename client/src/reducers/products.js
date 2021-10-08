@@ -1,17 +1,18 @@
-import { GET_PRODUCT, GET_PRODUCTS, RESET_PRODUCT } from "../actions/types";
+import { GET_PRODUCT, GET_PRODUCTS, RESET_PRODUCT, ADD_REVIEW, REMOVE_REVIEW } from "../actions/types";
 
 const initialState = {
     products: [],
     product: null,
+    reviews: [],
     loading: true
 }
 
 const products = (state = initialState, action) => {
     const { type, payload } = action;
     switch (type) {
-        default:{
+        default: {
             return state // We return the default state here
-         }
+        }
         case GET_PRODUCTS:
             return {
                 ...state,
@@ -29,6 +30,17 @@ const products = (state = initialState, action) => {
                 ...state,
                 product: null
             }
+        case ADD_REVIEW:
+            return {
+                ...state,
+                reviews: [payload, ...state.reviews]
+            }
+        case REMOVE_REVIEW: {
+            return {
+                ...state,
+                reviews: state.reviews.filter(review => review._id !== payload)
+            }
+        }
     }
 }
 

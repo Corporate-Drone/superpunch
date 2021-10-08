@@ -53,7 +53,7 @@ function SpecificProduct() {
     if (product) {
         allReviews = product.reviews.map(review => (
             <Review
-                username={review.username}
+                username={review.user.username}
                 body={review.body}
                 rating={review.rating}
                 date={review.date}
@@ -100,7 +100,7 @@ function SpecificProduct() {
                         <div>
                             <h3>Customer Reviews</h3>
                         </div>
-                        <ReviewForm />
+                        <ReviewForm productId={id} />
                         <div className="SpecificProduct-detail-reviews-posted">
                             {allReviews}
                         </div>

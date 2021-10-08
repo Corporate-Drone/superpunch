@@ -5,11 +5,11 @@ const reviewSchema = new Schema({
     body: { type: String, required: true },
     date: { type: String, required: true },
     rating: { type: Number, required: false },
-    editDate: String,
-    username: {
+    user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
-    }
+    },
+    productId: { type: String, required: true }
 });
 
 module.exports = mongoose.model("Review", reviewSchema);

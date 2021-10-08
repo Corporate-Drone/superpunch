@@ -12,15 +12,18 @@ export const registerUser = (username, email, password) => async dispatch => {
         }
         axios.post('/auth/register', data)
             .then(response => {
-                if (response.status === 200) {
+                if (response.status === 200 && response.data.token) {
                     dispatch({
                         type: REGISTER_SUCCESS,
                         payload: response.data
                     })
-                    // history.push('/chirps'); //redirect to chirps
+                } else {
+                    alert("Registeration failed. Please try again.")
                 }
             })
-        // .catch((err) => setDisplayError(err.response.data.message));
+            .catch(error => {
+                alert("Registeration failed. Please try again.")
+             }) 
     } catch (error) {
         console.log(error)
     }

@@ -1,35 +1,51 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import ReactStars from 'react-stars'
+import { useSelector, useDispatch } from 'react-redux';
 
-
-
+import getDate from '../../javascripts/currentDate'
 import './_ReviewForm.scss'
+import {addReview} from '../../actions/products'
 
-function ReviewForm() {
+function ReviewForm(props) {
+    const { productId } = props;
+    const dispatch = useDispatch();
+    const [rating, setRating] = useState();
+    const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
+    const user = useSelector(state => state.auth.user)
+
     const ratingChanged = (newRating) => {
-        console.log(newRating)
+        setRating(newRating)
     }
 
 
     return (
         <div className="ReviewForm">
             <div>Let others know what you think!</div>
-            <ReactStars
+            {!isAuthenticated && <ReactStars
                 count={5}
                 onChange={ratingChanged}
                 size={24}
                 color2={'#ffd700'}
                 half={false}
-            />
+                edit={false}
+            />}
+            {isAuthenticated && <ReactStars
+                count={5}
+                onChange={ratingChanged}
+                size={24}
+                color2={'#ffd700'}
+                half={false}
+            />}
             <Formik
                 initialValues={{
                     review: ""
                 }}
                 onSubmit={async values => {
-                    console.log('submit')
+                    let date = getDate()
+                    dispatch(addReview(values.review,date,rating,user._id, productId))
                 }}
 
                 validationSchema={Yup.object().shape({
@@ -56,7 +72,7 @@ function ReviewForm() {
                                 {/* <label htmlFor="first">
                                     First Name
                                 </label> */}
-                                <textarea
+                                {isAuthenticated && <textarea
                                     id="review"
                                     type="text"
                                     placeholder="Write your review"
@@ -68,12 +84,17 @@ function ReviewForm() {
                                             ? "text-input review error"
                                             : "text-input review"
                                     }
-                                />
+                                />}
+                                {!isAuthenticated && <textarea
+                                    type="text"
+                                    placeholder="Please login to write a review."
+                                    disabled={true}
+                                />}
                                 {errors.review && touched.review && (
                                     <div className="input-feedback">{errors.review}</div>
                                 )}
                             </div>
-                            <button type="submit" disabled={isSubmitting} text="Submit" className="Button Button-form">Submit</button>
+                            {isAuthenticated && <button type="submit" disabled={isSubmitting} text="Submit" className="Button Button-form">Submit</button>}
                             {/* <Button type="submit" disabled={isSubmitting} text="Submit" className="Button Button-form"/> */}
                         </form>
                     );
