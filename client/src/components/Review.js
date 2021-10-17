@@ -1,10 +1,28 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactStars from 'react-stars'
+import { useSelector, useDispatch } from 'react-redux';
+import { removeReview } from '../actions/products';
 
 import './_Review.scss'
 
 function Review(props) {
-    const { username, body, rating, date } = props;
+    const { username, body, rating, date, id, productId } = props;
+    const [matched, setMatched] = useState(false);
+    const dispatch = useDispatch();
+    const user = useSelector(state => state.auth.user)
+
+    const handleClick = () => {
+        dispatch(removeReview(id,productId))
+    }
+
+    useEffect(() => {
+        if (user && user.username === username) {
+            setMatched(true)
+        }
+    }, [])
+
+
+
     return (
         <div className="Review">
             <div className="Review-detail">
@@ -23,6 +41,7 @@ function Review(props) {
             <div className="Review-body">
                 {body}
             </div>
+            {matched && <button onClick={handleClick}>X</button>}
         </div>
     )
 }

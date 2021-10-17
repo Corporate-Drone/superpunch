@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_PRODUCTS, GET_PRODUCT, RESET_PRODUCT, ADD_REVIEW } from './types';
+import { GET_PRODUCTS, GET_PRODUCT, RESET_PRODUCT, ADD_REVIEW, REMOVE_REVIEW } from './types';
 
 export const getProducts = () => async dispatch => {
     try {
@@ -52,6 +52,37 @@ export const addReview = (body, date, rating, user, productId) => async dispatch
             if (response.status === 200) {
                 dispatch({
                     type: ADD_REVIEW,
+                    payload: response.data
+                })
+                //   history.push('/chirps');
+            }
+        })
+        .catch(error => {
+            alert("There was an error posting the review. Please try again.")
+        });
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const removeReview = (id, productId) => async dispatch => {
+    const authorizationToken = localStorage.getItem('token');
+    const headers = {
+        Authorization: authorizationToken
+    }
+
+    const data = {
+        id,
+        productId
+    }
+    try {
+        console.log(data)
+        await axios.delete(`/shop/${productId}`, {headers,data})
+        .then(response => {
+            console.log(response)
+            if (response.status === 200) {
+                dispatch({
+                    type: REMOVE_REVIEW,
                     payload: response.data
                 })
                 //   history.push('/chirps');

@@ -57,6 +57,8 @@ function SpecificProduct() {
                 body={review.body}
                 rating={review.rating}
                 date={review.date}
+                id={review._id}
+                productId={id}
             />
         ))
         allImages = product.image.map(img => (

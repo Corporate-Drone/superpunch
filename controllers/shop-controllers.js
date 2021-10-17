@@ -52,6 +52,17 @@ const createReview = async (req, res) => {
     }
 }
 
+const deleteReview = async (req, res) => {
+    const reviewId = req.body.id
+    const productId = req.body.productId
+    try {
+        await Product.findByIdAndUpdate(productId, { $pull: { reviews: reviewId } })
+    } catch (error) {
+        
+    }
+}
+
 exports.getProducts = getProducts;
 exports.getProduct = getProduct;
 exports.createReview = createReview;
+exports.deleteReview = deleteReview;
