@@ -21,8 +21,6 @@ function Review(props) {
         }
     }, [])
 
-
-
     return (
         <div className="Review">
             <div className="Review-detail">

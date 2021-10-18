@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_PRODUCTS, GET_PRODUCT, RESET_PRODUCT, ADD_REVIEW, REMOVE_REVIEW } from './types';
+import { GET_PRODUCTS, GET_PRODUCT, RESET_PRODUCT, ADD_REVIEW, REMOVE_REVIEW, GET_REVIEWS } from './types';
 
 export const getProducts = () => async dispatch => {
     try {
@@ -24,6 +24,10 @@ export const getProduct = (id) => async dispatch => {
         dispatch({
             type: GET_PRODUCT,
             payload: res.data
+        })
+        dispatch({
+            type: GET_REVIEWS,
+            payload: res.data.reviews
         })
     } catch (err) {
         console.log(err)
@@ -76,16 +80,14 @@ export const removeReview = (id, productId) => async dispatch => {
         productId
     }
     try {
-        console.log(data)
         await axios.delete(`/shop/${productId}`, {headers,data})
         .then(response => {
             console.log(response)
             if (response.status === 200) {
                 dispatch({
                     type: REMOVE_REVIEW,
-                    payload: response.data
+                    payload: data.id
                 })
-                //   history.push('/chirps');
             }
         })
         .catch(error => {

@@ -43,9 +43,10 @@ function ReviewForm(props) {
                 initialValues={{
                     review: ""
                 }}
-                onSubmit={async values => {
+                onSubmit={async (values, {resetForm}) => {
                     let date = getDate()
-                    dispatch(addReview(values.review,date,rating,user._id, productId))
+                    dispatch(addReview(values.review, date, rating, user._id, productId))
+                    resetForm()
                 }}
 
                 validationSchema={Yup.object().shape({

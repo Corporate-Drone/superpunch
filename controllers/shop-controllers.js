@@ -45,7 +45,7 @@ const createReview = async (req, res) => {
         foundproduct.reviews.push(review)
         await foundproduct.save()
         await review.save()
-        res.send('Review added!')
+        res.send(review)
         
     } catch (error) {
         console.log(error)
@@ -57,6 +57,7 @@ const deleteReview = async (req, res) => {
     const productId = req.body.productId
     try {
         await Product.findByIdAndUpdate(productId, { $pull: { reviews: reviewId } })
+        res.send('Review deleted!')
     } catch (error) {
         
     }

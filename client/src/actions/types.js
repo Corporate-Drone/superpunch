@@ -9,6 +9,7 @@ export const LOGIN_FAIL = 'LOGIN_FAIL';
 export const LOGOUT = 'LOGOUT';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const GET_PRODUCT = 'GET_PRODUCT';
+export const GET_REVIEWS = 'GET_REVIEWS';
 export const REVIEW_ERROR = 'REVIEW_ERROR';
 export const UPDATE_STARS = 'UPDATE_STARS';
 export const ADD_POST = 'ADD_POST';

@@ -20,6 +20,7 @@ function SpecificProduct() {
     const items = useSelector(state => state.checkoutItem.items)
     const product = useSelector(state => state.products.product)
     const loading = useSelector(state => state.products.loading)
+    const reviews = useSelector(state => state.products.reviews)
 
     useEffect(() => {
         dispatch(getProduct(id))
@@ -48,10 +49,10 @@ function SpecificProduct() {
 
     }
 
-    let allReviews;
+    let reduxReviews;
     let allImages;
     if (product) {
-        allReviews = product.reviews.map(review => (
+        reduxReviews = reviews.map(review => (
             <Review
                 username={review.user.username}
                 body={review.body}
@@ -104,7 +105,7 @@ function SpecificProduct() {
                         </div>
                         <ReviewForm productId={id} />
                         <div className="SpecificProduct-detail-reviews-posted">
-                            {allReviews}
+                            {reduxReviews}
                         </div>
                     </div>
                 </div>
