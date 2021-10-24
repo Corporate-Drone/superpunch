@@ -16,7 +16,7 @@ function SpecificProduct() {
     const { id } = useParams();
     const history = useHistory();
     const dispatch = useDispatch();
-
+    
     const items = useSelector(state => state.checkoutItem.items)
     const product = useSelector(state => state.products.product)
     const loading = useSelector(state => state.products.loading)
@@ -59,6 +59,7 @@ function SpecificProduct() {
                 rating={review.rating}
                 date={review.date}
                 id={review._id}
+                key={review._id}
                 productId={id}
             />
         ))
@@ -90,7 +91,7 @@ function SpecificProduct() {
                         color2={'#ffd700'}
                         half={false}
                         edit={false}
-                        value={4}
+                        value={product.rating}
                     />
                     <div>${product.price}.00</div>
                     <div className="SpecificProduct-detail-buttons">

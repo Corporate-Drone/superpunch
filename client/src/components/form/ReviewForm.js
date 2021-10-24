@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import getDate from '../../javascripts/currentDate'
 import './_ReviewForm.scss'
-import {addReview} from '../../actions/products'
+import { addReview } from '../../actions/products'
 
 function ReviewForm(props) {
     const { productId } = props;
@@ -43,9 +43,14 @@ function ReviewForm(props) {
                 initialValues={{
                     review: ""
                 }}
-                onSubmit={async (values, {resetForm}) => {
+                onSubmit={async (values, { resetForm }) => {
                     let date = getDate()
-                    dispatch(addReview(values.review, date, rating, user._id, productId))
+                    if (!rating) {
+                        alert("Please select a rating.")
+                    } else {
+                        dispatch(addReview(values.review, date, rating, user._id, productId))
+                    }
+                
                     resetForm()
                 }}
 
