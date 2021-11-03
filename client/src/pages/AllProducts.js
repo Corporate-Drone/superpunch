@@ -52,11 +52,11 @@ function AllProducts() {
                     {displayProducts}
                 </div>
                 <ul>
-                    <li onClick={() => handleClick('All Products')}>All Products</li>
-                    <li onClick={() => handleClick('Boxing Gloves')}>Boxing Gloves</li>
-                    <li onClick={() => handleClick('MMA Gloves')}>MMA Gloves</li>
-                    <li onClick={() => handleClick('Bag Gloves')}>Bag Gloves</li>
-                    <li onClick={() => handleClick('Wraps')}>Wraps</li>
+                    <li className="hover-underline-animation" onClick={() => handleClick('All Products')}>All Products</li>
+                    <li className="hover-underline-animation" onClick={() => handleClick('Boxing Gloves')}>Boxing Gloves</li>
+                    <li className="hover-underline-animation" onClick={() => handleClick('MMA Gloves')}>MMA Gloves</li>
+                    <li className="hover-underline-animation" onClick={() => handleClick('Bag Gloves')}>Bag Gloves</li>
+                    <li className="hover-underline-animation" onClick={() => handleClick('Wraps')}>Wraps</li>
                 </ul>
             </div>}
             {!loading && <div className="AllProducts-Products">

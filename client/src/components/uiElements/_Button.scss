@@ -1,0 +1,18 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.Button {
+    background-color: $color-primary-dark;
+    color: $color-primary;
+    border-radius: 0.5rem;
+    &:hover {
+        background-color: $color-primary-light;
+        cursor: pointer;
+    }
+}
+
+.Button-Remove {
+    height: 30px;
+    margin-top: auto;
+    margin-bottom: auto;
+}

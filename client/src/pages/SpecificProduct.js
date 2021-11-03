@@ -5,6 +5,7 @@ import { Carousel } from 'react-responsive-carousel';
 import { useSelector, useDispatch } from 'react-redux';
 
 import './_SpecificProduct.scss'
+import Button from '../components/uiElements/Button';
 import Loader from '../components/uiElements/Loader';
 import Review from '../components/Review';
 import ReviewForm from '../components/form/ReviewForm';
@@ -95,8 +96,8 @@ function SpecificProduct() {
                     />
                     <div>${product.price}.00</div>
                     <div className="SpecificProduct-detail-buttons">
-                        <button onClick={() => handleClick()}>Add to Cart</button>
-                        <button onClick={() => handleClick('buyNow')}>Buy Now</button>
+                        <Button onClick={() => handleClick()} text={"Add To Cart"}/>
+                        <Button onClick={() => handleClick('buyNow')} text={"Buy Now"}/>
                     </div>
 
 

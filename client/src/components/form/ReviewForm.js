@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import ReactStars from 'react-stars'
 import { useSelector, useDispatch } from 'react-redux';
 
+import Button from '../uiElements/Button';
 import getDate from '../../javascripts/currentDate'
 import './_ReviewForm.scss'
 import { addReview } from '../../actions/products'
@@ -100,7 +101,7 @@ function ReviewForm(props) {
                                     <div className="input-feedback">{errors.review}</div>
                                 )}
                             </div>
-                            {isAuthenticated && <button type="submit" disabled={isSubmitting} text="Submit" className="Button Button-form">Submit</button>}
+                            {isAuthenticated && <Button type="submit" disabled={isSubmitting} text="Submit" className="Button Button-form" text={"Submit"}/>}
                             {/* <Button type="submit" disabled={isSubmitting} text="Submit" className="Button Button-form"/> */}
                         </form>
                     );

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { removeItem } from '../actions/checkoutItem';
 
 import './_ItemInCart.scss'
+import Button from './uiElements/Button';
 
 function ItemInCart(props) {
     const { item, setSubtotal, subtotal } = props
@@ -45,12 +46,12 @@ function ItemInCart(props) {
                 </Link>
                 <img src={item.image} alt={item.name}></img>
                 <div className="ItemInCart-detail-quantity">
-                    <button onClick={decreaseQuantity}>-</button>
+                <Button onClick={decreaseQuantity} text={"-"}/>
                     <div>{quantity}</div>
-                    <button onClick={addQuantity}>+</button>
+                <Button onClick={addQuantity} text={"+"}/>
                 </div>
                 <div className="ItemInCart-detail-price">${total}</div>
-            <button className="ItemInCart-detail-remove" onClick={() => handleClick(item._id)}>Remove</button>
+            <Button remove={true} onClick={() => handleClick(item._id)} text={"Remove"}/>
             </div>
     )
 }

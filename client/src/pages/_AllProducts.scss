@@ -1,12 +1,16 @@
 @import '../styles/mixins';
+@import '../styles/variables';
 
 .AllProducts {
     @include center-vertically;
     // height: 100vh;
     flex-direction: row;
-    border: 1px solid blue;
-
+    position: relative;
+    
     &-types {
+        position: absolute;
+        top: 0;
+        left: 0;
         &-display {
             font-size: 1.5rem;
             margin-bottom: 6rem;
@@ -33,8 +37,7 @@
             flex-wrap: wrap;
             flex-direction: row;
             margin-left: auto;
-            justify-content: flex-end;
-            border: 1px solid red;
+            justify-content: flex-start;
         }
     }
 }
@@ -78,3 +81,26 @@
         }
     }
 }
+
+.hover-underline-animation {
+    display: inline-block;
+    position: relative;
+
+    &:after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: $color-primary-dark;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+    }
+
+    &:hover:after{
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+  }

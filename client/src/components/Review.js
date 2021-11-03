@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { removeReview } from '../actions/products';
 
 import './_Review.scss'
+import Button from './uiElements/Button';
 
 function Review(props) {
     const { username, body, rating, date, id, productId } = props;
@@ -39,7 +40,7 @@ function Review(props) {
             <div className="Review-body">
                 {body}
             </div>
-            {matched && <button onClick={handleClick}>X</button>}
+            {matched && <Button onClick={handleClick} text={"X"} />}
         </div>
     )
 }

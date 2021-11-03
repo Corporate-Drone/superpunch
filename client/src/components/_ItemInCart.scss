@@ -2,7 +2,7 @@
 
 .ItemInCart {
     &-detail {
-        border: 1px solid green;
+        border: 1px solid rgb(185, 192, 185);
         display: flex;
         justify-content: space-between;
         margin-bottom: 1rem;
@@ -22,11 +22,14 @@
         &-price {
             @include center-vertically;
         }
+    }
+}
 
-        &-remove {
-            height: 30px;
-            margin-top: auto;
-            margin-bottom: auto;
+@media only screen and (max-width: 700px) { 
+    .ItemInCart{
+        &-detail{
+            @include center-vertically;
         }
     }
+
 }

@@ -23,14 +23,14 @@ const getProduct = async (req, res) => {
 
         let totalRatings = 0;
         //get average number of ratings if product has ratings
-        if (product.ratings) {
+        if (product.rating) {
             for (let review of product.reviews) {
                 totalRatings = totalRatings + review.rating
             }
+            
             product.rating = totalRatings / product.reviews.length
             await product.save()
         }
-   
         res.send(product)
     } catch (error) {
         console.log(error)

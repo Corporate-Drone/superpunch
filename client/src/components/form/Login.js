@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch } from 'react-redux'
 
+import Button from '../uiElements/Button';
 import { loginUser } from '../../actions/auth';
 import './_Login.scss'
 
@@ -85,16 +86,13 @@ function Login(props) {
                 </div>
 
 
-                <button className="Login-Submit" type="submit" disabled={isSubmitting}>
-                  Login
-                </button>
-
+                <Button className="Login-Submit" type="submit" disabled={isSubmitting} text={"Login"}/>
               </form>
             </div>
           );
         }}
       </Formik>
-      <div>Don't have an account? <button onClick={handleClick}>Create one</button></div>
+      <div>Don't have an account? <Button onClick={handleClick} text={"Create one"}/></div>
     </div>
   )
 }
