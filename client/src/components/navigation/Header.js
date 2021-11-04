@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux'
 import { Link } from "react-router-dom";
+import { useAlert } from 'react-alert'
 
 import { ReactComponent as CloseMenu } from "../../assets/x.svg";
 import { ReactComponent as MenuIcon } from "../../assets/menu.svg";
@@ -12,6 +13,7 @@ import { LOGOUT } from '../../actions/types';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const alert = useAlert()
 
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
@@ -28,7 +30,8 @@ const Header = () => {
   const handleLogout = () => {
     dispatch({
       type: LOGOUT
-  })
+    })
+    alert.success("Logout Successful!")
   }
 
   const items = useSelector(state => state.checkoutItem.items)

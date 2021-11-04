@@ -18,4 +18,5 @@ export const REMOVE_REVIEW = 'REMOVE_REVIEW';
 export const ADD_CART = 'ADD_CART';
 export const REMOVE_CART = 'REMOVE_CART';
 export const RESET_PRODUCT = 'RESET_PRODUCT';
+export const RESET_USER = 'RESET_USER';
 export const ACCOUNT_DELETED = 'ACCOUNT_DELETED';

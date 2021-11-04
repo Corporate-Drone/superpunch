@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useHistory, useParams } from "react-router-dom";
 import ReactStars from 'react-stars'
 import { Carousel } from 'react-responsive-carousel';
 import { useSelector, useDispatch } from 'react-redux';
+import { useAlert } from 'react-alert'
 
 import './_SpecificProduct.scss'
 import Button from '../components/uiElements/Button';
@@ -17,7 +18,8 @@ function SpecificProduct() {
     const { id } = useParams();
     const history = useHistory();
     const dispatch = useDispatch();
-    
+    const alert = useAlert()
+
     const items = useSelector(state => state.checkoutItem.items)
     const product = useSelector(state => state.products.product)
     const loading = useSelector(state => state.products.loading)
@@ -30,16 +32,19 @@ function SpecificProduct() {
     const handleClick = (buyNow) => {
         if (items.length === 0) {
             dispatch(addItem(product))
+            alert.success("Product added to cart!");
             if (buyNow) {
                 history.push('/checkout')
+                
             }
         } else {
             for (const item of items) {
                 if (item._id === product._id) {
-                    alert("This product is already in your cart!");
+                    alert.show("Product already in cart!");
                     break;
                 } else {
                     dispatch(addItem(product))
+                    alert.show("Product added to cart!");
                     if (buyNow) {
                         history.push('/checkout')
                     }
@@ -96,8 +101,8 @@ function SpecificProduct() {
                     />
                     <div>${product.price}.00</div>
                     <div className="SpecificProduct-detail-buttons">
-                        <Button onClick={() => handleClick()} text={"Add To Cart"}/>
-                        <Button onClick={() => handleClick('buyNow')} text={"Buy Now"}/>
+                        <Button onClick={() => handleClick()} text={"Add To Cart"} />
+                        <Button onClick={() => handleClick('buyNow')} text={"Buy Now"} />
                     </div>
 
 

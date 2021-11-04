@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 
-import { LOGIN_SUCCESS, REGISTER_SUCCESS} from './types';
+import { LOGIN_FAIL,REGISTER_FAIL, LOGIN_SUCCESS, REGISTER_SUCCESS} from './types';
 
 export const registerUser = (username, email, password) => async dispatch => {
     try {
@@ -18,11 +18,15 @@ export const registerUser = (username, email, password) => async dispatch => {
                         payload: response.data
                     })
                 } else {
-                    alert("Registeration failed. Please try again.")
+                    dispatch({
+                        type: REGISTER_FAIL
+                    })
                 }
             })
             .catch(error => {
-                alert("Registeration failed. Please try again.")
+                dispatch({
+                    type: REGISTER_FAIL
+                })
              }) 
     } catch (error) {
         console.log(error)
@@ -48,7 +52,9 @@ export const loginUser = (username, password) => async dispatch => {
                 }
             })
             .catch(error => {
-                alert("Login failed. Please try again.")
+                dispatch({
+                    type: LOGIN_FAIL
+                })
             });
     } catch (error) {
         console.log(error)

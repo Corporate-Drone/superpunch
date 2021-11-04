@@ -1,15 +1,33 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useAlert } from 'react-alert'
 
 import Button from '../uiElements/Button';
 import { registerUser } from '../../actions/auth';
+import { RESET_USER } from '../../actions/types';
 import './_Register.scss'
 
 function Register(props) {
+    const user = useSelector(state => state.auth.user)
+
     const { handleClick } = props;
     const dispatch = useDispatch();
+    const alert = useAlert()
+
+    useEffect(() => {
+        if (user === 'fail') {
+            alert.error('Authentication failed. Please try again.')
+
+            //reset user fail state
+            setTimeout(() => {
+                dispatch({
+                  type: RESET_USER
+              })
+              }, 1000);
+        }
+    }, [user])
 
     return (
         <div>
@@ -144,14 +162,14 @@ function Register(props) {
                                 </div>
 
 
-                                <Button type="submit" disabled={isSubmitting} text={"Register"}/>
+                                <Button type="submit" disabled={isSubmitting} text={"Register"} />
 
                             </form>
                         </div>
                     );
                 }}
             </Formik>
-            <div>Already have an account? <Button onClick={handleClick} text={"Log in"}/></div>
+            <div>Already have an account? <Button onClick={handleClick} text={"Log in"} /></div>
         </div>
     )
 }

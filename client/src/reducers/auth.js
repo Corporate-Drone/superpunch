@@ -4,8 +4,10 @@ import {
     USER_LOADED,
     AUTH_ERROR,
     LOGIN_SUCCESS,
+    LOGIN_FAIL,
     LOGOUT,
-    ACCOUNT_DELETED
+    ACCOUNT_DELETED,
+    RESET_USER
 } from '../actions/types';
 
 const initialState = {
@@ -37,9 +39,19 @@ const auth = (state = initialState, action) => {
                 user: payload.user
             };
         case REGISTER_FAIL:
+        case LOGIN_FAIL:
         case AUTH_ERROR:
-        case LOGOUT:
         case ACCOUNT_DELETED:
+            localStorage.removeItem('token');
+            return {
+                ...state,
+                token: null,
+                isAuthenticated: false,
+                loading: false,
+                user: 'fail'
+            };
+        case RESET_USER:
+        case LOGOUT:
             localStorage.removeItem('token');
             return {
                 ...state,
