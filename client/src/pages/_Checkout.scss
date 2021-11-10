@@ -2,6 +2,12 @@
 
 .Checkout {
     @include center-vertically;
-    // height: 100vh;
-    border: 1px solid blue;
+
+    &-empty {
+        margin-bottom: 1rem;
+    }
+
+    &-subtotal {
+        margin-bottom: 1rem;
+    }
 }

@@ -1,5 +1,8 @@
+@import '../../styles/variables';
+
 .ReviewForm {
-    border: 1px solid green;
+    border: 1px solid $color-primary-light;
+    border-radius: 0.2rem;
     margin-bottom: 1rem;
     .input-feedback {
         color: red;

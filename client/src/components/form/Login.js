@@ -110,7 +110,7 @@ function Login(props) {
           );
         }}
       </Formik>
-      <div>Don't have an account? <Button onClick={handleClick} text={"Create one"}/></div>
+      <div className="Login-ask">Don't have an account? <Button onClick={handleClick} text={"Create one"}/></div>
     </div>
   )
 }

@@ -42,11 +42,11 @@ function Checkout() {
 
     return (
         <div className="Checkout">
-            {!isAuthenticated && <h1>Your Shopping Cart</h1>}
-            {isAuthenticated && <h1>{user.username}'s Shopping Cart</h1>}
+            {!isAuthenticated && <h1 className="Checkout-header">Your Shopping Cart</h1>}
+            {isAuthenticated && <h1 className="Checkout-header">{user.username}'s Shopping Cart</h1>}
             {cartItems}
-            {items.length <= 0 && <div>Your cart is empty.</div>}
-            <div>Subtotal: ${subtotal}</div>
+            {items.length <= 0 && <div className="Checkout-empty">Your cart is empty.</div>}
+            <div className="Checkout-subtotal">Subtotal: ${subtotal}</div>
             {items.length > 0 && <Button onClick={handleCheckoutClick} text={"Checkout"}/>}
             {items.length <= 0 && <Button onClick={handleBrowseClick} text={"Browse Products"}/>}
         </div>

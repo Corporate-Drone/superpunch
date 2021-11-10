@@ -4,9 +4,14 @@
 .Button {
     background-color: $color-primary-dark;
     color: $color-primary;
-    border-radius: 0.5rem;
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.5rem;
+    box-shadow: none;
+
     &:hover {
         background-color: $color-primary-light;
+        border-color: $color-primary-light;
         cursor: pointer;
     }
 }

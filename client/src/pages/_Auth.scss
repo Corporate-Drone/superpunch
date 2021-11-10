@@ -1,7 +1,6 @@
 @import '../styles/_mixins';
 
 .Auth {
-    border: 1px solid red;
     @include center-vertically;
     height: 100vh;
 }

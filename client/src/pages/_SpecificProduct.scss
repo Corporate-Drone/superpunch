@@ -1,7 +1,6 @@
 @import '../styles/mixins';
 
 .SpecificProduct {
-    border: 1px solid red;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,6 +10,9 @@
     &-detail{
         height: 100vh;
         width: 35%;
+        &-price {
+            margin: 1rem 0;
+        }
         &-buttons {
             width: 50%;
             display: flex;
@@ -38,6 +40,9 @@
         }
         &-detail {
             width: 100%;
+            &-top {
+                @include center-vertically;
+            }
         }
     }
 }

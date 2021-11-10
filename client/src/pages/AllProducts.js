@@ -22,19 +22,19 @@ function AllProducts() {
         if (product) {
             dispatch(resetProduct())
         }
-    },[])
+    }, [])
 
     useEffect(() => {
         let displayedProducts = [];
         products.forEach((product) => {
             if (product.category === displayProducts) {
                 displayedProducts.push(product)
-            } else if (displayProducts === 'All Products'){
+            } else if (displayProducts === 'All Products') {
                 displayedProducts.push(product)
             }
         })
         setLoadedProducts(displayedProducts)
-    },[displayProducts, products])
+    }, [displayProducts, products])
 
     let fetchedProducts;
     if (loadedProducts) {
@@ -49,7 +49,9 @@ function AllProducts() {
             {!loading && <div className="AllProducts-types">
                 <div className="AllProducts-types-display">
                     Shop/<br />
-                    {displayProducts}
+                    <span className="AllProducts-types-display-current">
+                        {displayProducts}
+                    </span>
                 </div>
                 <ul>
                     <li className="hover-underline-animation" onClick={() => handleClick('All Products')}>All Products</li>
@@ -62,7 +64,7 @@ function AllProducts() {
             {!loading && <div className="AllProducts-Products">
                 <div className="AllProducts-Products-row">{fetchedProducts}</div>
             </div>}
-            {loading && <Loader/>}
+            {loading && <Loader />}
         </div>
     )
 }

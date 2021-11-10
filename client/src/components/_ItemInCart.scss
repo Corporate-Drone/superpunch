@@ -1,18 +1,31 @@
 @import '../styles/mixins';
+@import '../styles/variables';
 
 .ItemInCart {
     &-detail {
-        border: 1px solid rgb(185, 192, 185);
+        border: 1px solid $color-primary-light;
         display: flex;
         justify-content: space-between;
         margin-bottom: 1rem;
-        
-        img {
-            border: 1px solid black;
-            width: 50%;
+        padding: 1rem;
+
+        &-image {
+            @include center-vertically;
+            width: 60%;
+            a {
+                text-decoration: none;
+                color: inherit;
+            }
+            img {
+                width: 50%;
+            }
         }
+        
+
         &-quantity {
             @include center-vertically;
+            justify-content: space-around;
+            width: 70px;
             flex-direction: row;
             button {
                 height: 30px;
@@ -28,6 +41,16 @@
 @media only screen and (max-width: 700px) { 
     .ItemInCart{
         &-detail{
+            &-image {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            &-quantity {
+                margin-bottom: 1rem;
+            }
+            &-price {
+                margin-bottom: 1rem;
+            }
             @include center-vertically;
         }
     }

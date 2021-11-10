@@ -169,7 +169,7 @@ function Register(props) {
                     );
                 }}
             </Formik>
-            <div>Already have an account? <Button onClick={handleClick} text={"Log in"} /></div>
+            <div className="Register-ask">Already have an account? <Button onClick={handleClick} text={"Log in"} /></div>
         </div>
     )
 }

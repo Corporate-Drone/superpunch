@@ -1,5 +1,9 @@
+@import '../styles/variables';
+
 .Review {
-    border: 1px solid green;
+    border: 1px solid $color-primary-light;
+    margin-bottom: 1rem;
+    border-radius: 0.2rem;
     &-detail {
         display: flex;
         flex-direction: row;
@@ -9,7 +13,7 @@
         }
     }
     &-body {
-        border-top: 1px solid black;
+        border-top: 1px solid $color-primary-light;
     }
 }
 

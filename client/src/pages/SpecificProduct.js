@@ -35,7 +35,7 @@ function SpecificProduct() {
             alert.success("Product added to cart!");
             if (buyNow) {
                 history.push('/checkout')
-                
+
             }
         } else {
             for (const item of items) {
@@ -90,19 +90,21 @@ function SpecificProduct() {
                     </Carousel>
                 </div>
                 <div className="SpecificProduct-detail">
-                    <h2>{product.name}</h2>
-                    <ReactStars
-                        count={5}
-                        size={24}
-                        color2={'#ffd700'}
-                        half={false}
-                        edit={false}
-                        value={product.rating}
-                    />
-                    <div>${product.price}.00</div>
-                    <div className="SpecificProduct-detail-buttons">
-                        <Button onClick={() => handleClick()} text={"Add To Cart"} />
-                        <Button onClick={() => handleClick('buyNow')} text={"Buy Now"} />
+                    <div className="SpecificProduct-detail-top">
+                        <h2>{product.name}</h2>
+                        <ReactStars
+                            count={5}
+                            size={24}
+                            color2={'#ffd700'}
+                            half={false}
+                            edit={false}
+                            value={product.rating}
+                        />
+                        <div className="SpecificProduct-detail-price">${product.price}.00</div>
+                        <div className="SpecificProduct-detail-buttons">
+                            <Button onClick={() => handleClick()} text={"Add To Cart"} />
+                            <Button onClick={() => handleClick('buyNow')} text={"Buy Now"} />
+                        </div>
                     </div>
 
 

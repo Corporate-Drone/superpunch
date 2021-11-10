@@ -16,7 +16,7 @@ function ItemInCart(props) {
     useEffect(() => {
         setTotal(item.price)
         setQuantity(1)
-},[item])
+    }, [item])
 
     const handleClick = (id) => {
         dispatch(removeItem(id))
@@ -41,18 +41,20 @@ function ItemInCart(props) {
 
     return (
         <div className="ItemInCart-detail" key={item._id}>
-            <Link to={`/shop/${item._id}`}>
-                <div>{item.name}</div>
+            <div className="ItemInCart-detail-image">
+                <Link to={`/shop/${item._id}`}>
+                    <div>{item.name}</div>
                 </Link>
                 <img src={item.image} alt={item.name}></img>
-                <div className="ItemInCart-detail-quantity">
-                <Button onClick={decreaseQuantity} text={"-"}/>
-                    <div>{quantity}</div>
-                <Button onClick={addQuantity} text={"+"}/>
-                </div>
-                <div className="ItemInCart-detail-price">${total}</div>
-            <Button remove={true} onClick={() => handleClick(item._id)} text={"Remove"}/>
             </div>
+            <div className="ItemInCart-detail-quantity">
+                <Button onClick={decreaseQuantity} text={"-"} />
+                <div>{quantity}</div>
+                <Button onClick={addQuantity} text={"+"} />
+            </div>
+            <div className="ItemInCart-detail-price">${total}</div>
+            <Button className="button" remove={true} onClick={() => handleClick(item._id)} text={"Remove"} />
+        </div>
     )
 }
 
