@@ -4,6 +4,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import ReactStars from 'react-stars'
 import { useSelector, useDispatch } from 'react-redux';
+import { useAlert } from 'react-alert'
 
 import Button from '../uiElements/Button';
 import getDate from '../../javascripts/currentDate'
@@ -16,6 +17,7 @@ function ReviewForm(props) {
     const [rating, setRating] = useState();
     const isAuthenticated = useSelector(state => state.auth.isAuthenticated)
     const user = useSelector(state => state.auth.user)
+    const alert = useAlert()
 
     const ratingChanged = (newRating) => {
         setRating(newRating)
@@ -47,7 +49,7 @@ function ReviewForm(props) {
                 onSubmit={async (values, { resetForm }) => {
                     let date = getDate()
                     if (!rating) {
-                        alert("Please select a rating.")
+                        alert.error("Please select a rating.")
                     } else {
                         dispatch(addReview(values.review, date, rating, user._id, productId))
                     }

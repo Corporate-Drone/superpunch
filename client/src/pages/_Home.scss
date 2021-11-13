@@ -4,16 +4,55 @@
     height: 100vh;
     @include center-vertically;
     flex-direction: row;
+    position: relative;
+
+    animation: animationFrames ease 2s;
+    animation-iteration-count: 1;
+    transform-origin: 50% 50%;
+    animation-fill-mode:forwards; /*when the spec is finished*/
+
+    &-info {
+        position: relative;
+        z-index: 1;
+        font-weight: bold;
+    }
+
+    &-Ali {
+        position: absolute;
+        z-index: 0;
+        
+    }
 }
 
 @media only screen and (max-width: 700px) {
     .Home {
         flex-direction: column;
-        &-info {
-            margin-bottom: 1rem;
+        // &-info {
+        //     margin-bottom: 1rem;
+        // }
+        // img {
+        //     width: 80%;
+        // }
+        &-Ali {
+            // position: relative;
         }
-        img {
-            width: 80%;
-        }
+        // img {
+        //     width: 100%;
+        // }
+        // img {
+        //     width: 500px;
+        // }
+        
     }
 }
+
+@keyframes animationFrames{
+    0% {
+      opacity:0;
+      transform:  translate(0px,-25px)  ;
+    }
+    100% {
+      opacity:1;
+      transform:  translate(0px,0px)  ;
+    }
+  }

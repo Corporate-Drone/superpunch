@@ -8,7 +8,8 @@ import Button from './uiElements/Button';
 
 function Review(props) {
     const { username, body, rating, date, id, productId } = props;
-    const [matched, setMatched] = useState(false);
+    const [matched, setMatched] = useState(false); //allow user to delete comment
+    const [reviewUser, setReviewUser] = useState()
     const dispatch = useDispatch();
     const user = useSelector(state => state.auth.user)
 
@@ -20,12 +21,23 @@ function Review(props) {
         if (user && user.username === username) {
             setMatched(true)
         }
+
+        //set username to logged in user if newly posted comment has undefined user
+        if (username == undefined) {
+            setReviewUser(user.username)
+            setMatched(true)
+        } else {
+            setReviewUser(username)
+            if (user && reviewUser === user.username) {
+                setMatched(true)
+            }
+        }
     }, [])
 
     return (
         <div className="Review">
             <div className="Review-detail">
-                <div>{username}</div>
+                <div>{reviewUser}</div>
                 <ReactStars
                     count={5}
                     size={24}

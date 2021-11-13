@@ -78,7 +78,7 @@ function SpecificProduct() {
 
     return (
         <>
-            <div onClick={() => history.push('/shop')}>Back</div>
+            <div className="SpecificProduct-back"onClick={() => history.push('/shop')}>Back</div>
             {product && !loading && <div className="SpecificProduct">
                 <div className="SpecificProduct-images">
                     <Carousel

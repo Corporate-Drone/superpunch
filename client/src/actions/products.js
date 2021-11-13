@@ -58,6 +58,7 @@ export const addReview = (body, date, rating, user, productId) => async dispatch
                     type: ADD_REVIEW,
                     payload: response.data
                 })
+                console.log(response.data)
                 //   history.push('/chirps');
             }
         })

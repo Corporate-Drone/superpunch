@@ -21,9 +21,15 @@ const getProduct = async (req, res) => {
             }
         })
 
+        //reset product rating if all reviews were deleted
+        if (product.rating > 0 && product.reviews.length === 0) {
+            product.rating = 0
+            await product.save()
+        }
+
         let totalRatings = 0;
         //get average number of ratings if product has ratings
-        if (product.rating) {
+        if (product.rating || product.reviews.length > 0) {
             for (let review of product.reviews) {
                 totalRatings = totalRatings + review.rating
             }
@@ -45,7 +51,6 @@ const createReview = async (req, res) => {
     try {
         const { body, date, rating, user, productId } = req.body;
         const foundproduct = await Product.findById(productId);
-
         const review = new Review()
         review.body = body
         review.date = date
@@ -56,6 +61,7 @@ const createReview = async (req, res) => {
         foundproduct.reviews.push(review)
         await foundproduct.save()
         await review.save()
+
         res.send(review)
         
     } catch (error) {
@@ -68,6 +74,7 @@ const deleteReview = async (req, res) => {
     const productId = req.body.productId
     try {
         await Product.findByIdAndUpdate(productId, { $pull: { reviews: reviewId } })
+        await Review.findByIdAndDelete(reviewId)
         res.send('Review deleted!')
     } catch (error) {
         
