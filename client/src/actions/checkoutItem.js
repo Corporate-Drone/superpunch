@@ -5,9 +5,6 @@ export const addItem = item => async dispatch => {
         type: ADD_CART,
         payload: item
     })
-    // return {
-    //     type: 'add'
-    // }
 }
 
 export const removeItem = item => async dispatch => {
@@ -15,7 +12,4 @@ export const removeItem = item => async dispatch => {
         type: REMOVE_CART,
         payload: item
     })
-    // return {
-    //     type: 'remove'
-    // }
 } 

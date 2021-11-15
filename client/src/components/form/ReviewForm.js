@@ -78,9 +78,6 @@ function ReviewForm(props) {
                     return (
                         <form onSubmit={handleSubmit}>
                             <div className="ReviewForm-text">
-                                {/* <label htmlFor="first">
-                                    First Name
-                                </label> */}
                                 {isAuthenticated && <textarea
                                     id="review"
                                     type="text"
@@ -104,7 +101,6 @@ function ReviewForm(props) {
                                 )}
                             </div>
                             {isAuthenticated && <Button type="submit" disabled={isSubmitting} text="Submit" className="Button Button-form" text={"Submit"}/>}
-                            {/* <Button type="submit" disabled={isSubmitting} text="Submit" className="Button Button-form"/> */}
                         </form>
                     );
                 }}

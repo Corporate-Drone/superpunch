@@ -59,7 +59,6 @@ export const addReview = (body, date, rating, user, productId) => async dispatch
                     payload: response.data
                 })
                 console.log(response.data)
-                //   history.push('/chirps');
             }
         })
         .catch(error => {

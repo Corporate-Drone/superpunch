@@ -11,7 +11,7 @@ const products = (state = initialState, action) => {
     const { type, payload } = action;
     switch (type) {
         default: {
-            return state // We return the default state here
+            return state
         }
         case GET_PRODUCTS:
             return {

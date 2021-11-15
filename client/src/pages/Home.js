@@ -17,7 +17,7 @@ function Home() {
                 </h1>
                 <Button onClick={() => history.push('/shop')} text={'Shop Now'} />
             </div>
-            <div className="Home-Ali"><img src={Ali}></img></div>
+            <div className="Home-Ali"><img  alt="ali vs liston" src={Ali}></img></div>
 
         </div>
     )

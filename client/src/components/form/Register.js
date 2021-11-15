@@ -75,9 +75,6 @@ function Register(props) {
                         <div className="Register">
                             <form onSubmit={handleSubmit}>
                                 <div className="Register-Username">
-                                    {/* <label htmlFor="username">
-                                    Username
-              </label> */}
                                     <input
                                         id="username"
                                         placeholder="Enter your username"
@@ -97,9 +94,6 @@ function Register(props) {
                                 </div>
 
                                 <div className="Register-Email">
-                                    {/* <label htmlFor="email">
-                                    Email
-                            </label> */}
                                     <input
                                         id="email"
                                         placeholder="Enter your email"
@@ -119,7 +113,6 @@ function Register(props) {
                                 </div>
 
                                 <div className="Register-Password">
-                                    {/* <label htmlFor="passowrd">Password</label> */}
                                     <input
                                         type="password"
                                         name="password"
@@ -140,7 +133,6 @@ function Register(props) {
                                     )}
                                 </div>
                                 <div className="Register-PasswordTwo">
-                                    {/* <label htmlFor="passowrd">Password</label> */}
                                     <input
                                         type="password"
                                         name="passwordtwo"
