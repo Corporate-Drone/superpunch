@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { Link, useHistory } from 'react-router-dom';
 
 import { LOGIN_FAIL,REGISTER_FAIL, LOGIN_SUCCESS, REGISTER_SUCCESS} from './types';
 
